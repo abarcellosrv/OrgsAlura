@@ -7,15 +7,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.alura.orgs.R
-import br.com.alura.orgs.model.Product
+import br.com.alura.orgs.model.Products
 
 class ProductListAdapter(
     private val context: Context ,
-    private val products: List<Product>
+    private val products: List<Products>
 ) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
 
     class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view){
-        fun vincula(produto: Product) {
+        fun vincula(produto: Products) {
             val nome = itemView.findViewById<TextView>(R.id.name)
             nome.text = produto.name
             val descricao = itemView.findViewById<TextView>(R.id.description)
