@@ -11,7 +11,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Orgs" >
         <activity android:name=".ui.activity.ProductFormActivity"
-            android:exported="true">
+            android:exported="true"
+            tools:ignore="IntentFilterExportedReceiver"
+            tools:node="merge">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
