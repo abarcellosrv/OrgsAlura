@@ -13,18 +13,25 @@ import br.com.alura.orgs.model.Products
 import com.google.android.gms.analytics.ecommerce.Product
 import java.math.BigDecimal
 
-class ProductFormActivity : AppCompatActivity(R.layout.activity_product_form) {
-    override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
-        super.onCreate(savedInstanceState, persistentState)
-
+class ProductFormActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_product_form)
 
         val saveButton = findViewById<Button>(R.id.save_button)
-        saveButton.setOnClickListener {
-            val name = findViewById<EditText>(R.id.name).text
-            val nameText = name.toString()
-            val descriptionText = findViewById<EditText>(R.id.description).text
-            val description = descriptionText.toString()
 
+        saveButton.setOnClickListener {
+            val name = findViewById<EditText>(R.id.name).text.toString()
+            val description = findViewById<EditText>(R.id.description).text.toString()
+            val priceText = findViewById<EditText>(R.id.price).text.toString()
+            val price = if(priceText.isBlank()){
+                BigDecimal.ZERO
+            }else{
+                BigDecimal(priceText)
+            }
+            val newProduct = Products(name, description, price)
+
+            Log.i("ProductForm", "onCreate: $$newProduct")
 
         }
     }
